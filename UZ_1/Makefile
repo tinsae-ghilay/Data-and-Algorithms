@@ -12,7 +12,7 @@ BIN = array
 # g++
 CFLAG = g++
 # C++ version to compile to
-VFLAG = -std=c++23
+VFLAG = -std=c++2a
 # error handling flags
 WFLAG = -Wall -Werror
 
