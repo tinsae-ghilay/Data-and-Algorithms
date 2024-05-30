@@ -1,0 +1,12 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/tgk/Documents/GitHub/Data-and-Algorithms/UZ_2",
+            "binaryPath": "/home/tgk/Documents/GitHub/Data-and-Algorithms/UZ_2/stack",
+            "binaryArgs": []
+        }
+    ],
+    "files.associations": {
+        "iostream": "cpp"
+    }
+}
