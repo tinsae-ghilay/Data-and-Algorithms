@@ -4,13 +4,13 @@
 */
 
 #ifndef BINARY_H
-#define BIANRY_H
+#define BINARY_H
 
 
 class BinaryTree{
 private:
     int size_ = 0;
-    //int depth_ = 0;
+    int depth_ = 0;
     int data;
     BinaryTree* left = nullptr;
     BinaryTree* right = nullptr;

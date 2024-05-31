@@ -27,10 +27,12 @@ $(BIN): $(objects)
 %.o: %.cpp
 	$(CFLAG) $(VFLAG) $(WFLAG) -g -c $< -o $@
 
+# clean
+.PHONY:clean, run
+
 # run the program
 run: $(BIN)
 	./${BIN}
-# clean
-.PHONY:clean
+
 clean:
 	rm -f $(BIN) *.o

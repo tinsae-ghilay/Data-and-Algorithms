@@ -7,34 +7,36 @@ using namespace std;
 
 BinaryTree::BinaryTree()=default;
 
-BinaryTree::BinaryTree(int data) : data(data), left(nullptr), right(nullptr) {}
+BinaryTree::BinaryTree(int data) : data(data), left(nullptr), right(nullptr)
+{
+}
 
 // insert data to root
-BinaryTree* BinaryTree::insert(BinaryTree*root, int data)
+BinaryTree* BinaryTree::insert(BinaryTree*root, int val)
 {
     if(!root){
-        cout << " "<<data;
+        cout << " "<<val;
         this->size_++;
-        return new BinaryTree(data);
+        return new BinaryTree(val);
     }
-    if(data > root->data){
-        root->right = insert(root->right,data);
+    if(val > root->data){
+        root->right = insert(root->right,val);
     }else{
-        root->left = insert(root->left,data);
+        root->left = insert(root->left,val);
     }
     return root;
 }
 
 
-// removes a teree whose data is = @param data
+// removes a tree whose data is = @param data
 // reataches binary tree  
-void BinaryTree::remove(BinaryTree *root, int data)
+void BinaryTree::remove(BinaryTree *root, int val)
 {
-    if(!root){
-        return;
-    }
-    if(root->data == data){
-        cout << "removing "<<data<<endl;
+    cout << "Removing "<<val<<endl;
+
+    // find value in tree
+    root = find(root,val);
+    if(root){
         auto pr = root;
         auto rm = root->right;
         while (rm)
@@ -55,20 +57,16 @@ void BinaryTree::remove(BinaryTree *root, int data)
         }else{
             pr->right = nullptr;
         }
-        
+
         root->data = rm->data;
+        this->size_--;
         if(rm){
             delete rm;
         }
         return;
     }else{
-        if(root->data > data){
-            remove(root->left,data);
-        }else{
-            remove(root->right,data);
-        }
+        cout <<val<< " doesnt exist in tree. Nothing was removed"<<endl;
     }
-
 }
 
 void BinaryTree::preOrder(BinaryTree *tree)
@@ -109,11 +107,17 @@ int BinaryTree::depth()
     return 0;//this->depth_;
 }
 
-BinaryTree *BinaryTree::find(BinaryTree *root, int data)
+BinaryTree *BinaryTree::find(BinaryTree *root, int value)
 {
-    if(root->data == data){
+    if(!root){
+        return nullptr;
+    }
+    if(root->data == value){
         return root;
+    }
+    if(root->data > value){
+        return find(root->left,value);
     }else{
-        return (root->data > data) ? find(root->right, data) : find(root->left, data);
+        return find(root->right,value);
     }
 }
