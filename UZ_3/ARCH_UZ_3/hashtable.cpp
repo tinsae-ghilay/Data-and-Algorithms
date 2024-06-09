@@ -2,25 +2,23 @@
 // Created by tgk on 6/6/24.
 //
 
-#include "HashTable.h"
-#include <cmath>
+# include "hashtable.h"
+//# include <cmath>
 # include <string>
 # include <stdexcept>
+# include <iostream>
+
+using namespace std;
 
 
 // Hash function 1,
 // starts from string length
 // hashes string to unsigned long by multiplying a char by 31 and the position of the char squared.
 // returns a size_t cast of the hashed value modulo size
-unsigned int HashTable::hash(const string &key)
+size_t HashTable::hash(const string &key)
 {
-    unsigned long hash = key.length();
-    for (size_t i = 0; i < key.length(); i++) {
-        // best distribution I got 31 is there just because its a prime number (probably just a random event)
-        hash += key[i]*31 * i * i;
-    }
-    return (unsigned int)hash % this->size_;
-}
+    return 0;
+};
 
 // constructor
 HashTable::HashTable(size_t size)
@@ -173,4 +171,38 @@ size_t HashTable::size()
 size_t HashTable::count()
 {
     return this->count_;
+}
+
+//  overriding hash functions for inherited classes
+
+// Hash function 1,
+// starts from string length
+// hashes string to unsigned long by multiplying a char by 7919 (1000th prime number) and the position of the char squared.
+// returns a size_t cast of the hashed value modulo size
+size_t HashTableOne::hash(const string &key)
+{
+    unsigned long hash = key.length();
+    for (size_t i = 0; i < key.length(); i++) {
+        // best distribution I got. -> 7919 is there just because its a prime number (probably just a random event)
+        hash += key[i] * 7919 * i * i;
+    }
+    return (unsigned int)hash % this->size();
+}
+
+// Hash function 2,
+// Fowler–Noll–Vo hash function
+// source [wikipedia]( https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function )
+size_t HashTableTwo::hash(const string &key)
+{
+    // The FNV_offset_basis is the 64-bit FNV offset basis value: 14695981039346656037 (in hex, 0xcbf29ce484222325).
+    unsigned long offset = 14695981039346656037UL; // wikipedia
+    // The FNV_prime is the 64-bit FNV prime value: 1099511628211 (in hex, 0x100000001b3).
+    unsigned long prime = 1099511628211; // wikipedia
+    unsigned long hash = offset; // repeat- can be removed, will be
+    for (auto c: key) {
+        hash *= prime;
+        hash^=c;
+    }
+    // return hash modulo size
+    return (unsigned int)hash % this->size();
 }

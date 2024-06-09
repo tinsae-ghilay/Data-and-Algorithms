@@ -1,6 +1,7 @@
 //
 // Created by tgk on 6/6/24.
 // for Algorithms and data structures
+// child classes HastTableOne and HashTableTwo are at the bottom
 //
 
 #ifndef HASHTABLE_H
@@ -12,16 +13,20 @@
 using namespace  std;
 
 // pair of key and value
-
 typedef struct Pair{
     string key;
     string value;
     Pair* pair;
 }pair;
 
+// toString operator for Pair
 inline std::ostream& operator <<(std::ostream& os, Pair& pair){
     return os << " ["<< pair.key <<" : " <<pair.value<<"]";
 }
+
+
+// HashTable. 
+// Abstract class with a virtual hash function.
 class HashTable {
 
     private:
@@ -31,9 +36,10 @@ class HashTable {
     // array container for elements
     Pair **container;
     // my hash function
-    protected:
-    virtual size_t hash(const string& key);
 
+    protected:
+    // virtual hash function.
+    virtual size_t hash(const string& key);
 
     public:
     // constructor
@@ -53,18 +59,22 @@ class HashTable {
     size_t count();
 };
 
-
+// HashTableOne inherits HashTable
+// overrides hash() function
 class HashTableOne : public HashTable {
 
     using HashTable::HashTable;
-    // my hash function
+    // Hash function 1,
     size_t hash(const string& key) override;
 };
 
+// HashTableTwo inherits HashTable
+// overrides hash() function
 class HashTableTwo : public HashTable {
     
     using HashTable::HashTable;
-    // my hash function
+    // Hash function 2,
+    // Fowler–Noll–Vo hash function
     size_t hash(const string& key) override;
 
 };

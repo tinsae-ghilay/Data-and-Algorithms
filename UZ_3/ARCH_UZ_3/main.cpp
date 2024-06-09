@@ -3,9 +3,7 @@
 //
 
 # include <iostream>
-# include "HashTable.h"
-# include "sHashTable.h"
-# include "pair.h"
+# include "hashtable.h"
 # include "search.h"
 
 
@@ -14,7 +12,8 @@ int main(){
 
     // 1. Erstellen Sie eine Hash-Tabelle mit einer Hash-Funktion
     cout << "--- TABLE WITH HASHING FUNCTION ONE ---" <<endl<<endl;
-    auto t1 = sHashTable(5); // hash table with hash finction one (FNV hash function);
+
+    auto t1 = HashTableOne(5); // hash table with hash finction one (FNV hash function);
     // 2. Fügen Sie 5 Einträge in die Tabelle ein
     t1.insert("0676-425-83-47", "Alex");
     t1.insert("0688-625-47-33", "Alexa");
@@ -24,10 +23,12 @@ int main(){
 
     // 3. Drucken Sie die Tabelle aus (sowohl Schlüssel und Werte)
     t1.print();
-    cout << "Table one size "<< t1.size()<<" and count "<< t1.count() << endl;
+    cout << "Table one size "<< t1.size()<<" and count "<< t1.count() << endl<<endl;
+
     // 4. Erstellen Sie eine weitere Hash-Tabelle mit einer anderen Hash-Funktion
-    auto t2 = HashTable(5); // hashTable with hash function that adds char multiplied by 31 to the char index
+    auto t2 = HashTableTwo(5); // hashTable with hash function that adds char multiplied by 31 to the char index
     cout <<endl<< "--- TABLE WITH HASHING FUNCTION TWO ---" <<endl;
+    
     // 5. Fügen SIe 5 Einträge in die Tabelle ein
     t2.insert("0676-425-83-47", "Alex");
     t2.insert("0688-625-47-33", "Alexa");

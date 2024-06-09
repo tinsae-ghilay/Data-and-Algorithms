@@ -183,7 +183,9 @@ size_t HashTableOne::hash(const string &key)
 {
     unsigned long hash = key.length();
     for (size_t i = 0; i < key.length(); i++) {
-        // best distribution I got. -> 7919 is there just because its a prime number (probably just a random event)
+        // best distribution I got. 
+        // 7919 is there just because its a prime number (probably just a random event)
+        // 7919 can be replaced by any prime number > than size_, 
         hash += key[i] * 7919 * i * i;
     }
     return (unsigned int)hash % this->size();
