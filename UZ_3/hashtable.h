@@ -36,7 +36,6 @@ class HashTable {
     // array container for elements
     Pair **container;
     // my hash function
-
     protected:
     // virtual hash function.
     virtual size_t hash(const string& key);
