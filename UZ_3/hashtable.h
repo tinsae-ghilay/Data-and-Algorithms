@@ -1,18 +1,27 @@
 //
 // Created by tgk on 6/6/24.
+// for Algorithms and data structures
 //
 
 #ifndef HASHTABLE_H
 #define HASHTABLE_H
 # include <string>
 # include <iostream>
-# include "pair.h"
 
 
 using namespace  std;
 
+// pair of key and value
 
+typedef struct Pair{
+    string key;
+    string value;
+    Pair* pair;
+}pair;
 
+inline std::ostream& operator <<(std::ostream& os, Pair& pair){
+    return os << " ["<< pair.key <<" : " <<pair.value<<"]";
+}
 class HashTable {
 
     private:
@@ -22,7 +31,8 @@ class HashTable {
     // array container for elements
     Pair **container;
     // my hash function
-    unsigned int hash(const string& key);
+    protected:
+    virtual size_t hash(const string& key);
 
 
     public:
@@ -43,5 +53,20 @@ class HashTable {
     size_t count();
 };
 
+
+class HashTableOne : public HashTable {
+
+    using HashTable::HashTable;
+    // my hash function
+    size_t hash(const string& key) override;
+};
+
+class HashTableTwo : public HashTable {
+    
+    using HashTable::HashTable;
+    // my hash function
+    size_t hash(const string& key) override;
+
+};
 
 #endif //HASHTABLE_H
