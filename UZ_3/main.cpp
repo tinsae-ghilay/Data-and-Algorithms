@@ -20,6 +20,7 @@ int main(){
     t1.insert("0681 517 60 26", "Hofer") ;
     t1.insert("0676 108 68 78", "Andre");
     t1.insert("0699 837 79 90", "Christian");
+    t1.insert("0699 837 79 85", "James");
 
     // 3. Drucken Sie die Tabelle aus (sowohl Schlüssel und Werte)
     t1.print();

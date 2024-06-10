@@ -51,9 +51,8 @@ void HashTable::insert(const string &key, const string &value)
 			slot->value = value;//replace value on that key;
 		}else{ // new key
 		    cout << "Inserting ["<< key <<" : "<< value << "] Pair at index "<<index<< endl;
-		    while(slot->pair){
-		        //slot = slot->pair;
-		        continue;
+		    while(slot->pair){ // find last one in link
+		        slot = slot->pair;
 		    }
 		    // this is a new key to be added
 		    try{

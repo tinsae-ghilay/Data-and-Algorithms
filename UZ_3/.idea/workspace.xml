@@ -20,7 +20,10 @@
   <component name="ChangeListManager">
     <list default="true" id="dfdf9bc8-2edc-4f9c-8e73-247903ca0043" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hashtable.h" beforeDir="false" afterPath="$PROJECT_DIR$/hashtable.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARCH_UZ_3/hashtable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ARCH_UZ_3/hashtable.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARCH_UZ_3/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ARCH_UZ_3/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hashtable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/hashtable.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,9 +85,9 @@
   }
 }</component>
   <component name="RunManager" selected="Makefile Target.run">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="all" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
@@ -99,6 +102,12 @@
       </makefile>
       <method v="2" />
     </configuration>
+    <configuration name="all" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="all" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
     <configuration name="clean" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/Makefile" target="clean" workingDirectory="" arguments="">
         <envs />
@@ -107,6 +116,18 @@
     </configuration>
     <configuration name="clean" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/Makefile" target="clean" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <configuration name="clean" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="clean" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <configuration name="run" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="run" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
@@ -132,8 +153,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Makefile Target.run" />
-        <item itemvalue="Makefile Target.all" />
         <item itemvalue="Makefile Target.clean" />
+        <item itemvalue="Makefile Target.all" />
       </list>
     </recent_temporary>
   </component>
@@ -150,6 +171,7 @@
       <workItem from="1717777277850" duration="23000" />
       <workItem from="1717877215122" duration="103000" />
       <workItem from="1717957663841" duration="775000" />
+      <workItem from="1717995243639" duration="400000" />
     </task>
     <servers />
   </component>
