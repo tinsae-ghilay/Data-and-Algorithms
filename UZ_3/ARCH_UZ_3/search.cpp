@@ -15,10 +15,7 @@ Search::Search()
 
 unsigned long Search::binarySearch(int item)
 {
-    auto begin  = std::chrono::duration_cast<std::chrono::microseconds>(
-            std::chrono::high_resolution_clock::now().time_since_epoch())
-            .count();
-
+    auto start = std::chrono::high_resolution_clock::now().time_since_epoch();
     int low = 0;
     int high = SIZE-1;
     int mid = high/2;
@@ -33,24 +30,19 @@ unsigned long Search::binarySearch(int item)
         mid = (low+high) / 2;
         found = this->arr[mid-1];
     }
-    return std::chrono::duration_cast<std::chrono::microseconds>(
-            std::chrono::high_resolution_clock::now().time_since_epoch())
-            .count() - begin;
+    auto end = std::chrono::high_resolution_clock::now().time_since_epoch();
+    return std::chrono::duration_cast<std::chrono::microseconds>(end-start).count();
 
 }
 
 unsigned long Search::linearSearch(int item)
 {
-    auto begin  = std::chrono::duration_cast<std::chrono::microseconds>(
-            std::chrono::high_resolution_clock::now().time_since_epoch())
-            .count();
+    auto start = std::chrono::high_resolution_clock::now().time_since_epoch();
     for(int i = 0; i < SIZE; i++){
         if(arr[i] == item){
             break;
         }
     }
-    // if nothing is found return -1
-    return std::chrono::duration_cast<std::chrono::microseconds>(
-            std::chrono::high_resolution_clock::now().time_since_epoch())
-            .count() - begin;
+    auto end = std::chrono::high_resolution_clock::now().time_since_epoch();
+    return std::chrono::duration_cast<std::chrono::microseconds>(end-start).count();
 }
