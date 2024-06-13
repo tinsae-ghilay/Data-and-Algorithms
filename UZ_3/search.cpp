@@ -15,6 +15,7 @@ Search::Search()
 
 unsigned long Search::binarySearch(int item)
 {
+    // get start time
     auto start = std::chrono::high_resolution_clock::now().time_since_epoch();
     int low = 0;
     int high = SIZE-1;
@@ -30,7 +31,9 @@ unsigned long Search::binarySearch(int item)
         mid = (low+high) / 2;
         found = this->arr[mid-1];
     }
+    // get end time
     auto end = std::chrono::high_resolution_clock::now().time_since_epoch();
+    // return duration in microseconds
     return std::chrono::duration_cast<std::chrono::microseconds>(end-start).count();
 
 }
