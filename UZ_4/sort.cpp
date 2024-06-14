@@ -1,5 +1,5 @@
 //
-// Created by tgk on 6/12/24.
+// Created by tgk on 6/14/24.
 //
 
 #include "sort.h"
@@ -14,7 +14,6 @@ using namespace std;
 // source pseudo code on wikipedia
 // [insertion sort](https://en.wikipedia.org/wiki/Insertion_sort)
 void loopInsertion(vector<int>& array) {
-    //cout << "Insertion sorting ..."<<endl;
     // we start from second element
     // because the first element is considered sorted
     // as there are no items to compare it with
@@ -22,11 +21,19 @@ void loopInsertion(vector<int>& array) {
         // we compare item[i] with items below it,
         // we keep swaping it until item to the left is smaller than it
         size_t j = i;
-        while(j > 0 && array[j-1] > array[j]) {
-            // swap- see MACRO defined in header
-            SWAP(array[j], array[j-1]);
+        // improved version, reduces the amount of copying that hapens when we use SWAP() by half
+        // source 'Data Structures and Algorithms made easy' - {by Narasimha Karumanchi}
+        const auto target = array[i];
+        while(j > 0 && array[j-1] > target) {
+            // SWAP(array[j], array[j-1]; This is changed because it involves too much copying.
+            // move every item bigger than target, to the right.
+            // by replacing item at(j) with previous item -> array at(j-1)
+            array[j] =  array[j-1];
             j--;
         }
+        // when no items are biger than it any more, put target in the empty space
+        // empty space exists because we moved all bigger elements to the right
+        array[j] =  target;
     }
 }
 
@@ -41,12 +48,17 @@ void recursiveInsertion(vector<int>& array, size_t n) {
     // sort n-1 elements first
     recursiveInsertion(array,n-1);
     size_t j = n-1;
-    // swap positions to place item in to apropriate place
-    while(j > 0 && array[j-1] > array[j]) {
-        // swap- see MACRO defined in header
-        SWAP(array[j], array[j-1]);
+    // improved version, reduces the amount of copying that hapens when we use SWAP() by half
+    const auto target = array[n-1];
+    while(j > 0 && array[j-1] > target) {
+        // move every item bigger than target, to the right.
+        // by replacing item at(j) with previous item -> array at(j-1)
+        array[j] =  array[j-1];
         j--;
     }
+    // when no items are biger than it any more, put target in the empty space
+    // empty space exists because we moved all bigger elements to the right
+    array[j] =  target;
 }
 
 // selection sort, sorts elements one at a time,
@@ -102,48 +114,74 @@ void printVector(vector<int>& array) {
 }
 
 
-// testing functions
+// testing Inserting sort
+// craetes an array of size 8000
+// records time stamp,
+// sorts array
+// records time stamp, and then record duration
+// repeat @param repeat times
+// return the average duration
 unsigned long testInsertion(const int repeat){
     unsigned long duration = 0;
     for(int i = 0; i < repeat; i++) {
         vector<int> arry = generateArray(8000);
         // get start time
         const auto start = std::chrono::high_resolution_clock::now().time_since_epoch();
+        // sort array
         loopInsertion(arry);
         // get end time
         const auto end = std::chrono::high_resolution_clock::now().time_since_epoch();
+        // difference = duration
         duration+= std::chrono::duration_cast<std::chrono::microseconds>(end-start).count();
     }
     return duration/repeat;
 
 }
 
+// testing recursive Inserting sort
+// craetes an array of size 8000
+// records time stamp,
+// sorts array
+// records time stamp, and then record duration
+// repeat @param repeat times
+// return the average duration
 unsigned long testRecursiveInsertion(const int repeat){
 
-    
+
     unsigned long duration = 0;
     for(int i = 0; i < repeat; i++) {
         vector<int> arry = generateArray(8000);
         // get start time
         const auto start = std::chrono::high_resolution_clock::now().time_since_epoch();
+        // sort array
         recursiveInsertion(arry, arry.size());
         // get end time
         const auto end = std::chrono::high_resolution_clock::now().time_since_epoch();
+        // difference = duration
         duration+= std::chrono::duration_cast<std::chrono::microseconds>(end-start).count();
     }
     return duration/repeat;
 
 }
 
+// testing selection sort
+// craetes an array of size 8000
+// records time stamp,
+// sorts array
+// records time stamp, and then record duration
+// repeat @param repeat times
+// return the average duration
 unsigned long testSelection(const int repeat) {
     unsigned long duration = 0;
     for(int i = 0; i < repeat; i++) {
         vector<int> arry = generateArray(8000);
         // get start time
         const auto start = std::chrono::high_resolution_clock::now().time_since_epoch();
+        // sort array
         selection(arry);
         // get end time
         const auto end = std::chrono::high_resolution_clock::now().time_since_epoch();
+        // difference = duration
         duration+= std::chrono::duration_cast<std::chrono::microseconds>(end-start).count();
     }
     return duration/repeat;
