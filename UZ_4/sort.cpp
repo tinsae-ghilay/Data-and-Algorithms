@@ -6,13 +6,13 @@
 #include <random>
 #include <iostream>
 # include <chrono>
-# include <algorithm>
 using namespace std;
 
 // insertion sort loop
 // sorts an array of elements in ascending order;
 // source pseudo code on wikipedia
 // [insertion sort](https://en.wikipedia.org/wiki/Insertion_sort)
+// source 'Data Structures and Algorithms made easy' - {by Narasimha Karumanchi}
 void loopInsertion(vector<int>& array) {
     // we start from second element
     // because the first element is considered sorted
@@ -38,7 +38,7 @@ void loopInsertion(vector<int>& array) {
 }
 
 // insertion sort recursive
-// [insertion sort](https://en.wikipedia.org/wiki/Insertion_sort)
+// source [insertion sort](https://en.wikipedia.org/wiki/Insertion_sort)
 void recursiveInsertion(vector<int>& array, size_t n) {
 
     if (n <= 1) { // last item, done sorting
@@ -64,6 +64,7 @@ void recursiveInsertion(vector<int>& array, size_t n) {
 // selection sort, sorts elements one at a time,
 // find the smallest of none sorted items of the array,
 // and put it at apropriate place
+// source 'Data Structures and Algorithms made easy' - {by Narasimha Karumanchi}
 void selection(vector<int>& array)
 {
     //cout << "Selection sorting ..."<<endl;
@@ -75,7 +76,7 @@ void selection(vector<int>& array)
             }
         }
         if(i != least){ // no need to swap them if the items are equal -- optimizing
-            std::swap(array[i],array[least]);
+            SWAP(array[i],array[least]);
         }
     }
 }

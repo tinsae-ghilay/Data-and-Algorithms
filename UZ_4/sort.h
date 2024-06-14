@@ -6,8 +6,8 @@
 #define SORT_H
 # include <vector>
 
+// swaps two integers
 # define SWAP(x, y)  {int t = x; x= y; y = t;}
-
 
 using  namespace  std;
 
