@@ -5,7 +5,7 @@
 #ifndef SEARCH_H
 #define SEARCH_H
 
-# define SIZE 1500
+# define SIZE 5000
 
 
 class Search {
