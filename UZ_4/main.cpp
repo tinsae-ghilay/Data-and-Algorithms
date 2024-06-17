@@ -58,10 +58,9 @@ int main(){
     cout << endl << "********************************  STARTING TASK TWO *********************************************"<<endl << endl;
     //
     cout << "__ Selection sorting __"<<endl;
-    // selection sort
-    // selection sort has to compare more items. although it has to copy only once per itteration
+    // selection sort has to compare more items. although it has to copy only once per iteration
     // copying happens only once per outer iteration;
-    // it is slowwer than the improved version of insertion sorting, but a bit faster than the original insertion sorting.
+    // it is slower than the improved version of insertion sorting, but a bit faster than the original insertion sorting.
     const auto sel = testSelection(10);
     cout <<endl<< "Selection sort took "<<sel <<" microseconds"<<endl;
     // shuffle array again for another sorting
