@@ -1,0 +1,9 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/tgk/Documents/gitHub/Data-and-Algorithms/UZ_4",
+            "binaryPath": "/home/tgk/Documents/gitHub/Data-and-Algorithms/UZ_4/hash_table",
+            "binaryArgs": []
+        }
+    ]
+}
