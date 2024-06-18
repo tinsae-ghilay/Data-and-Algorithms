@@ -84,7 +84,7 @@ void selection(vector<int>& array)
 // shuffles a vector so it can be sorted again
 void shuffleVector(vector<int>& array) {
     //cout << "shuffling vector..."<<endl;
-    size_t size = array.size();
+    const size_t size = array.size();
     for (size_t i = 0; i < size; i++)
     {
         const size_t r = random() % size;
@@ -106,7 +106,7 @@ vector<int> generateArray(const size_t size) {
     return arr;
 }
 
-void printVector(vector<int>& array) {
+void printVector(const vector<int>& array) {
     cout <<" = {"<< array[0];
     for(size_t i = 1; i < array.size(); i++){
         cout <<  ", "<<array[i] ;
