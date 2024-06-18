@@ -96,16 +96,17 @@ void shuffleVector(vector<int>& array) {
 // generates a vector of some size
 vector<int> generateArray(const size_t size) {
 
+    // array to hold randomly generated items
     auto arr = vector<int>();
-    // populate array
     for(size_t i = 0; i < size; i++){
-
+        // populate array with random integers
         arr.push_back(static_cast<int>(random()% size)+1);
     }
     //
     return arr;
 }
 
+// prints all array elements
 void printVector(const vector<int>& array) {
     cout <<" = {"<< array[0];
     for(size_t i = 1; i < array.size(); i++){
