@@ -96,7 +96,7 @@ void merge(vector<int>& arr, const size_t start,const size_t mid, const size_t e
     size_t in_right = 0;
     // Insert items in big array in a sorted order
     // actual sorting happens here
-    while (in_left < left.size()/*left_max*/ && in_right < right.size()/*right_max*/) {
+    while (in_left < left.size() && in_right < right.size()) {
 
         // left is smaller or they are equal?
         if(left[in_left] <= right[in_right])
