@@ -148,7 +148,6 @@ void mergeSort(vector<int>& arr, const size_t start, const size_t end) {
         mergeSort(arr, mid+1,end);
         merge(arr, start,mid,end);
     }
-
 }
 
 // prints arry elements in a formated manner
