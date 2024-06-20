@@ -7,7 +7,7 @@
 # include <chrono>
 
 
-// fills a array of a given size
+// fills an array of a given size
 // with numbers from 0 -> size-1
 // elements shuffled using vShuffle() function
 vector<int> generateArray(const int size) {
@@ -68,7 +68,7 @@ void merge(vector<int>& arr, const size_t start,const size_t mid, const size_t e
 {
     // we have an array,
     // we have starting , mid, and end indices of our operation
-    // first lets keep track of where we are in the big array, i.e start
+    // first lets keep track of where we are in the big array, i.e. start
     size_t in = start;
     // now lets store elements in temporary arrays
     // left
@@ -76,18 +76,18 @@ void merge(vector<int>& arr, const size_t start,const size_t mid, const size_t e
     // right
     auto right = vector<int>();
 
-    const size_t left_max = mid - start + 1;
-    const size_t right_max = end - mid;
 
     // copy items to left
-    for(size_t i = 0; i < left_max ; i++) {
+    // size of left array = mid - start + 1;
+    for(size_t i = 0; i < mid-start+1; i++) {
         left.push_back(arr[start+ i]);
     }
-    // copy items to righ
-    for(size_t i = 0; i < right_max; i++) {
+    // copy items to right,
+    // size of right array = end - mid
+    for(size_t i = 0; i < end-mid; i++) {
         right.push_back(arr[mid + 1 + i]);
     }
-    // now we compare and put items in their apropriate place in the big array
+    // now we compare and put items in their appropriate place in the big array
     // since we are comparing items from two arrays by index,
     // we have to keep track of where we are on the two arrays as well
     // index for left array
@@ -96,7 +96,7 @@ void merge(vector<int>& arr, const size_t start,const size_t mid, const size_t e
     size_t in_right = 0;
     // Insert items in big array in a sorted order
     // actual sorting happens here
-    while (in_left < left_max && in_right < right_max) {
+    while (in_left < left.size()/*left_max*/ && in_right < right.size()/*right_max*/) {
 
         // left is smaller or they are equal?
         if(left[in_left] <= right[in_right])
@@ -112,7 +112,7 @@ void merge(vector<int>& arr, const size_t start,const size_t mid, const size_t e
     }
     // if one of the arrays is empty
     // if left is still not completely copied
-    while (in_left < left_max)
+    while (in_left < left.size())
     {
         // copy elements
         arr[in] = left[in_left];
@@ -120,8 +120,8 @@ void merge(vector<int>& arr, const size_t start,const size_t mid, const size_t e
         in++;
     }
 
-    // if right isnt completely copied
-    while (in_right < right_max)
+    // if right isn't completely copied
+    while (in_right < right.size())
     {
         // copy them all
         arr[in] = right[in_right];
@@ -135,7 +135,7 @@ void merge(vector<int>& arr, const size_t start,const size_t mid, const size_t e
 // items get sorted in ascending order
 void mergeSort(vector<int>& arr, const size_t start, const size_t end) {
 
-    // we have gone deep enogh
+    // we have gone deep enough
     if(start < end) {
         // variable mid is last index of left array,
         // right array begins at mid +1
@@ -163,7 +163,7 @@ void print(const vector<int>& arr) {
     cout << "}"<< endl;
 }
 
-// tests varage time it took to do bubble  sort
+// tests average time it took to do bubble  sort
 // creates an array of size 8000
 // records time stamp,
 // sorts array
@@ -175,11 +175,11 @@ unsigned long testBubbleSort(const int repeat){
 
     unsigned long duration = 0;
     for(int i = 0; i < repeat; i++) {
-        vector<int> arry = generateArray(8000);
+        vector<int> arr = generateArray(8000);
         // get start time
         const auto start = std::chrono::high_resolution_clock::now().time_since_epoch();
         // sort array
-        bubbleSort(arry);
+        bubbleSort(arr);
         // get end time
         const auto end = std::chrono::high_resolution_clock::now().time_since_epoch();
         // difference = duration
@@ -187,4 +187,25 @@ unsigned long testBubbleSort(const int repeat){
     }
     return duration/repeat;
 
+}
+
+
+// runs Merge sort repeatedly on a shuffled array
+// after shuffling array, record time -> run sort ->record time after sort
+// repeat for @repeat times and then
+// return the average duration it takes to sort the shuffled array
+unsigned long testMergeSort(const int repeat){
+    unsigned long duration = 0;
+    for(int i = 0; i < repeat; i++) {
+        vector<int> arr = generateArray(8000);
+        // get start time
+        const auto start = std::chrono::high_resolution_clock::now().time_since_epoch();
+        // sort array
+        mergeSort(arr, 0, arr.size());
+        // get end time
+        const auto end = std::chrono::high_resolution_clock::now().time_since_epoch();
+        // difference = duration
+        duration+= std::chrono::duration_cast<std::chrono::microseconds>(end-start).count();
+    }
+    return duration/repeat;
 }
