@@ -135,7 +135,7 @@ void merge(vector<int>& arr, const size_t start,const size_t mid, const size_t e
 // items get sorted in ascending order
 void mergeSort(vector<int>& arr, const size_t start, const size_t end) {
 
-    // we have gone deep enough
+    // if we are not deep enough/ part has one or 0 elements
     if(start < end) {
         // variable mid is last index of left array,
         // right array begins at mid +1
