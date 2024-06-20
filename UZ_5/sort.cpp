@@ -147,7 +147,7 @@ void mergeSort(vector<int>& arr, const size_t start, const size_t end) {
         mergeSort(arr,start,mid);
         mergeSort(arr, mid+1,end);
         merge(arr, start,mid,end);
-        }
+    }
 
 }
 
