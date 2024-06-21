@@ -18,7 +18,6 @@ vector<int> generateArray(const int size) {
     for(int i = 0; i < size; i++) {
         arr.push_back(i);
     }
-    cout << "Array generated"<<endl;
     // shuffle it
     vShuffle(arr);
     // return it
@@ -31,7 +30,6 @@ vector<int> generateArray(const int size) {
 void vShuffle(vector<int>& array) {
     auto device = random_device {};
     auto rng = std::default_random_engine {device()};
-    cout << "Shuffling array ..."<<endl;
     ranges::shuffle(std::begin(array), std::end(array), rng);
 }
 
@@ -155,11 +153,11 @@ void mergeSort(vector<int>& arr, const size_t start, const size_t end) {
 // Array elements : {1, 2, 3, 4, 5}
 void print(const vector<int>& arr) {
 
-    cout << "Array elements : {"<< arr[0];
+    cout << "Array elements : { "<< arr[0];
     for(size_t i = 1; i < arr.size(); i++) {
         cout << ", "<< arr[i];
     }
-    cout << "}"<< endl;
+    cout << " }"<< endl;
 }
 
 // tests average time it took to do bubble  sort
@@ -171,7 +169,7 @@ void print(const vector<int>& arr) {
 // return the average duration
 unsigned long testBubbleSort(const int repeat){
 
-
+    cout << "Testing bubble sort . ";
     unsigned long duration = 0;
     for(int i = 0; i < repeat; i++) {
         vector<int> arr = generateArray(8000);
@@ -181,11 +179,12 @@ unsigned long testBubbleSort(const int repeat){
         bubbleSort(arr);
         // get end time
         const auto end = std::chrono::high_resolution_clock::now().time_since_epoch();
+        cout << " .";
         // difference = duration
         duration+= std::chrono::duration_cast<std::chrono::microseconds>(end-start).count();
     }
+    cout << endl;
     return duration/repeat;
-
 }
 
 
@@ -194,6 +193,8 @@ unsigned long testBubbleSort(const int repeat){
 // repeat for @repeat times and then
 // return the average duration it takes to sort the shuffled array
 unsigned long testMergeSort(const int repeat){
+
+    cout << "Testing Merge sort . ";
     unsigned long duration = 0;
     for(int i = 0; i < repeat; i++) {
         vector<int> arr = generateArray(8000);
@@ -203,8 +204,10 @@ unsigned long testMergeSort(const int repeat){
         mergeSort(arr, 0, arr.size());
         // get end time
         const auto end = std::chrono::high_resolution_clock::now().time_since_epoch();
+        cout << " .";
         // difference = duration
         duration+= std::chrono::duration_cast<std::chrono::microseconds>(end-start).count();
     }
+    cout << endl;
     return duration/repeat;
 }

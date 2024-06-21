@@ -20,10 +20,10 @@ void vShuffle(vector<int>& array);
 
 // bubble sort
 // uses the bubble sort algorithm to sort items
-//  get sorted in ascending order
+// items get sorted in ascending order
 void bubbleSort(vector<int>& array);
 
-// merges two parts of mergeSorted array
+// merges two parts of mergeSOrted array
 void merge(vector<int>& arr, size_t start, size_t mid, size_t end);
 
 // merge sort
@@ -32,16 +32,16 @@ void merge(vector<int>& arr, size_t start, size_t mid, size_t end);
 void mergeSort(vector<int>& arr, size_t start, size_t end);
 
 
-// prints array elements in a formatted manner
+// prints arry elements in a formated manner
 // array will be printed like below
 // Array elements : {1, 2, 3, 4, 5}
 void print(const vector<int>& arr);
 
-// runs Bubble sort repeatedly on a shuffled array
-// return the average duration it takes to sort the shuffled array
-unsigned long testBubbleSort(const int repeat);
+// calculates time it takes to do bubble sort on an array of size 8000
+// by sorting items repeatedly and calculation the avaerage time
+unsigned long testBubbleSort(int repeat);
 
-// runs Merge sort repeatedly on a shuffled array
-// return the average duration it takes to sort the shuffled array
-unsigned long testMergeSort(const int repeat);
+// calculates time it takes to do merge sort on an array of size 8000
+// by sorting items repeatedly and calculation the avaerage time
+unsigned long testMergeSort(int repeat);
 #endif //SORT_H
