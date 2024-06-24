@@ -140,7 +140,7 @@ void mergeSort(vector<int>& arr, const size_t start, const size_t end) {
         // we set this at lower end of half,
         // so when array contains odd number of elements, eg 11 and start is 10, end = 21,
         // mid is (start + end) / 2 = 15 as we cant have floating pont numbers
-        // if odd e.g. 10, start = 10 and end = 20, then mid = (10 + 20)/2 = 15; thus
+        // if even e.g. 10, start = 10 and end = 20, then mid = (10 + 20)/2 = 15; thus
         const size_t mid = (start + end)/2;
         mergeSort(arr,start,mid);
         mergeSort(arr, mid+1,end);
